@@ -1,0 +1,4 @@
+Main color : green
+Second color : red
+Typo 1 : Montserrat
+Typo 2 : Roboto
