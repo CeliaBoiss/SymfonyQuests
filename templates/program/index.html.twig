@@ -4,4 +4,13 @@
 
 {% block body %}
    <h1>{{ website }} index</h1>
+   {% for program in programs %}
+   <div>
+      <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+      <p>{{ program.summary }}</p>
+      <a href="{{ path("program_by_id", { id: program.id }) }}">Voir la fiche</a>
+   </div>
+   {% else %}
+   <p>Aucune série trouvée.</p>
+   {% endfor %}
 {% endblock %}
