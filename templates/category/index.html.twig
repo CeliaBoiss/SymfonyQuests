@@ -5,7 +5,7 @@
 {% block body %}
 <h2>Catégories</h2>
 {% for category in categories %}
-<p>{{ loop.index }} / {{ category.name }}</p>
+<p><a href="{{ path('category_show', { categoryName: category.name }) }}">{{ loop.index }} / {{ category.name }}</a></p>
 {% else %}
 <p>Pas de catégories à afficher.</p>
 {% endfor %}
