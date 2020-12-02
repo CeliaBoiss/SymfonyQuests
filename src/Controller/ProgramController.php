@@ -5,8 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Repository\ProgramRepository;
 use App\Entity\Program;
+use App\Entity\Season;
 
 /**
 * @Route("/programs", name="program_")
@@ -29,10 +31,17 @@ class ProgramController extends AbstractController
     */
     public function show(Program $program): Response
     {
-        if(!$program) {
-            throw $this->createNotFoundException('No program with id : '.$id.' found in program\'s table.');
-        }
-
         return $this->render('program/programbyid.html.twig', ['program' => $program]);
+    }
+
+    /**
+     * @Route("/{programId}/season/{seasonId}", methods={"GET"}, name="season_show")
+     * @ParamConverter("program", options={"id" = "programId"})
+     * @ParamConverter("season", options={"id" = "seasonId"})
+     * @return Response a response instance
+    */
+    public function showSeason(Program $program, Season $season): Response
+    {
+        return $this->render('program/season_show.html.twig', ['program' => $program, 'season' => $season]);
     }
 }
