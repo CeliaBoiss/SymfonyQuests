@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Repository\ProgramRepository;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Entity\Episode;
 
 /**
 * @Route("/programs", name="program_")
@@ -43,5 +44,17 @@ class ProgramController extends AbstractController
     public function showSeason(Program $program, Season $season): Response
     {
         return $this->render('program/season_show.html.twig', ['program' => $program, 'season' => $season]);
+    }
+
+    /**
+     * @Route("/{programId}/seasons/{seasonId}/episodes/{episodeId}", methods={"GET"}, name="episode_show")
+     * @ParamConverter("program", options={"id" = "programId"})
+     * @ParamConverter("season", options={"id" = "seasonId"})
+     * @ParamConverter("episode", options={"id" = "episodeId"})
+     * @return Response a response instance
+    */
+    public function showEpisode(Program $program, Season $season, Episode $episode): Response
+    {
+        return $this->render('program/episode_show.html.twig', ['program' => $program, 'season' => $season, 'episode' => $episode]);
     }
 }
