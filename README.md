@@ -1,3 +1,3 @@
 # wild_series
 
-Quest 10 : https://youtu.be/lhkcVSWgAM4
+Quest 9 & 10 : https://youtu.be/lhkcVSWgAM4
