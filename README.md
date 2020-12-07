@@ -12,3 +12,6 @@
     * Season 2 : https://www.youtube.com/watch?v=tLac-lKSPLw&feature=youtu.be
     * Episode 1 : https://www.youtube.com/watch?v=_G6sOQW55To&feature=youtu.be
     * Episode 2 : https://www.youtube.com/watch?v=RxqSZvKBK9c&feature=youtu.be
+
+## Quest 13 :
+    * Validate form : https://www.youtube.com/watch?v=m7-kPQ9onMU&feature=youtu.be
