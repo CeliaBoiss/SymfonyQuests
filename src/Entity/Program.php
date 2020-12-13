@@ -32,9 +32,6 @@ class Program
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Le résumé ne peut pas être vide")
-     * @Assert\Regex(
-     *     pattern="/plus\sbelle\sla\svie\g/",
-     *     message="On parle de vraies séries ici")
      */
     private $summary;
 

@@ -18,3 +18,6 @@
 
 ## Quest 14 :
     * ManyToMany : https://www.youtube.com/watch?v=pBxxYuvsdRc&feature=youtu.be
+
+## Quest 15 :
+    * EntityType : https://youtu.be/UTppCgTqlhQ
