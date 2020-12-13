@@ -21,3 +21,6 @@
 
 ## Quest 15 :
     * EntityType : https://youtu.be/UTppCgTqlhQ
+
+## Quest 16 :
+    * Fixtures : https://youtu.be/eWG0TiO8VLE
