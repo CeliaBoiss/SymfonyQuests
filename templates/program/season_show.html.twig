@@ -10,9 +10,9 @@
 <ul>
 {% for episode in season.episodes %}
     <li>
-        <a href="{{ path("program_episode_show", { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}">Episode {{ episode.number }}</a>
+        <a href="{{ path("program_episode_show", { programSlug: program.slug, seasonId: season.id, episodeSlug: episode.slug }) }}">Episode {{ episode.number }}</a>
     </li>
 {% endfor %}
 </ul>
-<a href="{{ path('program_by_id', { id: program.id }) }}">Retour</a>
+<a href="{{ path('program_by_id', { slug: program.slug }) }}">Retour</a>
 {% endblock %}

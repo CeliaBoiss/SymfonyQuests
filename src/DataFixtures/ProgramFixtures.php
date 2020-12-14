@@ -6,9 +6,12 @@ use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use App\Service\Slugify;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugify;
+
     const PROGRAMS = [
         'Walking Dead' => [
                             'summary' => 'Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.',
@@ -36,6 +39,11 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
                             ],
 ];
 
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager)
     {
         $i = 0;
@@ -44,6 +52,10 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setTitle($title);
             $program->setSummary($data['summary']);
             $program->setCategory($this->getReference('category_0'));
+
+            $slug = $this->slugify->generate($program->getTitle());
+            $program->setSlug($slug);
+
             $manager->persist($program);
             $this->addReference('program_' . $i, $program);
             $i++;
