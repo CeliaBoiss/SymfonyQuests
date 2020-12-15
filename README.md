@@ -27,3 +27,6 @@
 
 ## Quest 17 :
     * Services : https://www.youtube.com/watch?v=k-wp8hsPbbI&feature=youtu.be
+
+## Quest 18 :
+    * Mail : https://www.youtube.com/watch?v=11GSL8R-36A&feature=youtu.be

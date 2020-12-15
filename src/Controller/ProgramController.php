@@ -13,6 +13,8 @@ use App\Entity\Season;
 use App\Entity\Episode;
 use App\Form\ProgramType;
 use App\Service\Slugify;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 /**
 * @Route("/programs", name="program_")
@@ -32,7 +34,7 @@ class ProgramController extends AbstractController
     /**
     * @Route("/new", name="new")
     */
-    public function new(Request $request, Slugify $slugify): Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -46,6 +48,13 @@ class ProgramController extends AbstractController
 
             $entityManager->persist($program);
             $entityManager->flush();
+
+            $email = (new Email())
+                ->from($this->getParameter('mailer_from'))
+                ->to('wewelcome.test@gmail.com')
+                ->subject('Une nouvelle série vient d\'être publiée !')
+                ->html($this->renderView('program/newProgramMail.html.twig', ['program' => $program]));
+            $mailer->send($email);
 
             return $this->redirectToRoute('program_index');
         }
