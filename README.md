@@ -30,3 +30,8 @@
 
 ## Quest 18 :
     * Mail : https://www.youtube.com/watch?v=11GSL8R-36A&feature=youtu.be
+
+## Quest 19 :
+    * 1 : https://www.youtube.com/watch?v=AnMAJtKUqrM&feature=youtu.be
+    * 2 : https://www.youtube.com/watch?v=cPHfUmG6Cew&feature=youtu.be
+    

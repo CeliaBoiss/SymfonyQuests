@@ -6,5 +6,21 @@
 <h2>{{ program.title }}, Saison {{ season.number }}, Episode {{ episode.number }}</h2>
 <p>Titre de l'épisode : {{ episode.title }}</p>
 <p>Résumé : {{ episode.synopsis }}</p>
+{% if app.user %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Ajouter">
+    {{ form_end(form) }}
+{% endif %}
+<p>Commentaires :</p>
+{% for comment in comments %}
+<ul>
+    <li>Commentaire : {{ comment.comment }}</li>
+    <li>Note : {{ comment.rate }}</li>
+    <li>Auteur : {{ comment.author.username }}</li>
+</ul>
+{% else %}
+<p>Pas de commentaires à afficher.</p>
+{% endfor %}
 <a href="{{ path('program_season_show', { programSlug: program.slug, seasonId: season.id }) }}">Retour</a>
 {% endblock %}
