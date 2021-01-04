@@ -15,6 +15,7 @@ use App\Entity\Episode;
 use App\Entity\Comment;
 use App\Form\ProgramType;
 use App\Form\CommentType;
+use App\Form\SearchProgramFormType;
 use App\Service\Slugify;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
@@ -29,10 +30,19 @@ class ProgramController extends AbstractController
      * @Route("/", name="index")
      * @return Response a response instance
      */    
-    public function index(ProgramRepository $programRepository): Response
+    public function index(Request $request, ProgramRepository $programRepository): Response
     {
-        $programs = $programRepository->findAll();
-        return $this->render('program/index.html.twig', ['website' => 'Wild Séries', 'programs' => $programs]);
+        $form = $this->createForm(SearchProgramFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];    
+            $programs = $programRepository->findLikeName($search);    
+        } else {    
+            $programs = $programRepository->findAll();    
+        }
+
+        return $this->render('program/index.html.twig', ['website' => 'Wild Séries', 'programs' => $programs, 'searchForm' => $form->createView()]);
     }
 
     /**
