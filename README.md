@@ -34,4 +34,9 @@
 ## Quest 19 :
     * 1 : https://www.youtube.com/watch?v=AnMAJtKUqrM&feature=youtu.be
     * 2 : https://www.youtube.com/watch?v=cPHfUmG6Cew&feature=youtu.be
-    
+
+## Quest 20 :
+    * 1 : https://www.youtube.com/watch?v=1VorMr9DK3M&feature=youtu.be
+    * 2 : https://www.youtube.com/watch?v=r3QKns7wZDU&feature=youtu.be
+    * 3 : https://www.youtube.com/watch?v=lSE6v2RRqCs&feature=youtu.be
+

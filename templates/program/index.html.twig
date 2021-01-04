@@ -10,6 +10,7 @@
       <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
       <p>{{ program.summary }}</p>
       <a href="{{ path("program_by_id", { slug: program.slug }) }}">Voir la fiche</a>
+      <a href="{{ path("program_edit", { slug: program.slug }) }}">Modifier</a>
    </div>
    {% else %}
    <p>Aucune série trouvée.</p>

@@ -18,6 +18,9 @@
     <li>Commentaire : {{ comment.comment }}</li>
     <li>Note : {{ comment.rate }}</li>
     <li>Auteur : {{ comment.author.username }}</li>
+    {% if is_granted("ROLE_CONTRIBUTOR") %}
+        <li><a href="{{ path('comment_delete', { 'id': comment.id } ) }}">Supprimer</a></li>
+    {% endif %}
 </ul>
 {% else %}
 <p>Pas de commentaires à afficher.</p>

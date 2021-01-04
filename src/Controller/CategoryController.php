@@ -10,6 +10,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use App\Form\CategoryType;
 use App\Entity\Category;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
 * @Route("/categories", name="category_")
@@ -30,6 +31,7 @@ class CategoryController extends AbstractController
      * The controller for the category add form
      *
      * @Route("/new", name="new")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request) : Response
     {

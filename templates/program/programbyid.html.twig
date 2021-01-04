@@ -3,6 +3,9 @@
 {% block title %}Série #{{ program.id }}{% endblock %}
 
 {% block body %}
+{% if is_granted("ROLE_ADMIN") %}
+    <a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+{% endif %}
 <div class="media">
    <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
    <div class="media-body">
