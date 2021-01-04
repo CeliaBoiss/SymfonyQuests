@@ -3,11 +3,14 @@
 {% block title %}Wild Series{% endblock %}
 
 {% block body %}
+<!-- affichage barre de recherche -->
+   {{ app.session.get('total') }}
    <h1>{{ website }} index</h1>
    {{ form_start(searchForm) }}
    {{ form_widget(searchForm) }}
    <button>Search</button>
    {{ form_end(searchForm) }}
+
    <h3><a href="{{ path('program_new') }}">Ajouter une série</a></h3>
    {% for program in programs %}
    <div>

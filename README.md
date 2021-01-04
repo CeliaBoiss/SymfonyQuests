@@ -45,3 +45,6 @@
 
 ## Quest 22 :
     * https://www.youtube.com/watch?v=Fy7zZ1_t_b0&feature=youtu.be
+
+## Quest 23 :
+    * https://www.youtube.com/watch?v=Go0wxei2gGU

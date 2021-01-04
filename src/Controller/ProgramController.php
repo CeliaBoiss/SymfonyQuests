@@ -20,6 +20,7 @@ use App\Service\Slugify;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
 * @Route("/programs", name="program_")
@@ -30,8 +31,14 @@ class ProgramController extends AbstractController
      * @Route("/", name="index")
      * @return Response a response instance
      */    
-    public function index(Request $request, ProgramRepository $programRepository): Response
+    public function index(Request $request, ProgramRepository $programRepository, SessionInterface $session): Response
     {
+        if (!$session->has('total')) {
+            $session->set('total', 0); // if total doesn’t exist in session, it is initialized.
+        }
+
+        $total = $session->get('total');
+
         $form = $this->createForm(SearchProgramFormType::class);
         $form->handleRequest($request);
 
@@ -42,7 +49,12 @@ class ProgramController extends AbstractController
             $programs = $programRepository->findAll();    
         }
 
-        return $this->render('program/index.html.twig', ['website' => 'Wild Séries', 'programs' => $programs, 'searchForm' => $form->createView()]);
+        return $this->render('program/index.html.twig',
+            [
+                'website' => 'Wild Séries',
+                'programs' => $programs,
+                'searchForm' => $form->createView()
+            ]);
     }
 
     /**
@@ -71,6 +83,8 @@ class ProgramController extends AbstractController
                 ->subject('Une nouvelle série vient d\'être publiée !')
                 ->html($this->renderView('program/newProgramMail.html.twig', ['program' => $program]));
             $mailer->send($email);
+
+            $this->addFlash('success', 'La série a bien été ajoutée !');
 
             return $this->redirectToRoute('program_index');
         }
@@ -101,6 +115,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'La série a bien été modifiée !');
 
             return $this->redirectToRoute('program_index');
         }
